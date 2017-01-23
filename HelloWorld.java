@@ -1,0 +1,13 @@
+//comment
+//public class filename
+
+public class HelloWorld{
+
+    //main is a function
+    public static void main(String [] args) {
+	//System is a class, classes are CAPS
+	//methods on classes using dots, similar Python
+	System.out.println("Hello World");
+    }
+
+}

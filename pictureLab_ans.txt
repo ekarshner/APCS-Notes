@@ -1,0 +1,13 @@
+A1
+1. 8 bits of data
+2. 1 byte of data
+3. 307,200 pixels
+
+A3.
+1. row 0
+2. column 0
+3. column 639
+4. column 479
+5. The row index increases from top to bottom.
+6. The column index increases from left to right.
+7. I can see squares of color.

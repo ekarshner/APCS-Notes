@@ -1,0 +1,4 @@
+public class Stats{
+    int [] tally;
+    tally = new tally[16];
+    int tally = {

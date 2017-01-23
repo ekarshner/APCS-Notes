@@ -1,0 +1,7 @@
+public class GuessingGame{
+    import java.util.Scanner;
+    public static void main(String [] args){
+	Scanner reader = new Scanner(System.in);
+	System.out.println("Number has a max value of 50. Enter a letter: ");
+	String n = reader.nextString();
+	if(n.equals("

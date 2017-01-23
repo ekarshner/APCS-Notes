@@ -1,0 +1,548 @@
+if(random != L.size() -1);
+	  return L.set(random, L.remove(L.size() -1));
+else
+	return L.remove(L.size() -1);
+
+1/4
+LIST ADT
+
+ADT (ABSTRACT DATA TYPE) is a datatype defined by its operations (behavior)
+In Java, a list is a ADT that represents a collection defined in the List<E> interface
+
+List<E> interface:
+	import java.util.List;
+	uses generics: List <INTEGER>, List <STRING>, ...
+	A list is a reference type
+	A list cannot be instantiated
+	A list is an iterable collection
+	  -both versions of the for loop are supported
+
+List<E> methods:
+	Invoked Method		Value returned		State of L after invoked
+	L. size();		0     			[]
+	L.add(3);		true			[3]
+	L.add(1);		true			[3,1]
+	L.add(0,4);		void			[4,3,1]
+	L.add(3,7);		void			[4,3,1,7]
+	L.get(2);		1			[4,3,1,7]
+	L.set(2,5);		1			[4,3,5,7]	
+	L.remove(0);		4			[3,5,7]
+
+1/3
+DOT PRODUCT OF 2 VECTORS(arrays) 
+    let a = < a0, a1, ..., a(n-1)>
+    b = <b0, b1, ..., b(n-1)>
+    
+    then a . b = a0b0 + a1b1 + ... + a(N-1)b(n-1)
+
+MATRIX MULTIPLICATION OF 2 SQUARE MATRICES
+       AB = C
+       where c(ij) = dot product of row i of A and column j of B
+A = [1 2]
+    [3 4]
+B = [0 -1]
+    [5 2]
+
+A^2 = [1 2] [1 2] = [(1*1 + 2*3) (1*2 + 2*4)] = [7 10]
+      [3 4] [3 4]   [(3*1 + 4*3) (3*2 + 4*4)]   [15 22]
+
+B^2 = [-5 -2]
+      [25 -20]
+
+AB = [10 3]
+     [20 5]
+
+BA = [(0 + -3) (0 + -4)] = [-3 -4]
+     [(5 + 6) (10 + 8)]  [11 18]
+
+12/22
+ROW MAJOR ORDER: When a matrix is processed row by row
+
+12/19
+BIG O NOTATION: Let f and g be functions from the set of integers or the set of real numbers. we say f(x) is O(g(x)) if there are constants c and k such that
+    |f(x)| <= c|g(x)| whenever x > k [read as "f(x) is big-oh of g(x)"]
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+12/14
+THE BUBBLE SORT
+Algorithm:
+	Assume we will start in ascending order, let N = size of data, i=N, N>1
+	1. Let j = 0
+	2. If value at index j is greater than the value of j+1 then swap them
+	3. Let j = j+1
+	4. If j < i-1 then GOTO 2
+	5. Let i = i-1
+	6. If i = 1 then STOP else GOTO 1
+
+	a. #passes = n-1
+	b. #comparisons = N(N-1) /2
+	c. 0 <= #swaps <= N(N-1) /2
+
+12/12
+THE SELECTION SORT
+Algorithm:
+	Assume we will start in ascending order, let N = size of the data, i=0
+	1. Let a = position of the minimum value held in indexes 0 to N [i,N)
+	2. Swap the values in positions i and a
+	3. Let i = i+1
+	4. If i == N-1 then STOP else GOTO 1
+
+	a. #passes = n-1
+	b. #comparisons = N(N-1) /2  !! Per pass, is n - pass#
+	c. #swaps = n-1
+	SELECTION SORT IS INSENSITIVE TO THE ORDER OF THE DATA
+
+THE INSERTION SORT
+Algorithm:
+	Assume we will start in ascending order, N = data size, i = 0
+	1. Let j = i+1
+	2. if the value at index j is less than the value at j-1, then swap the values at j and j-1, else GOTO 5
+	3. Let j = j-1
+	4. If j = 0 then GOTO 5 else GOTO 2
+	5. Let i = i+1
+	6. If i = N-1 then STOP else GOTO 1
+
+	a. #passes = n-1
+	b. n-1 <= #comparisons <= N(N-1) /2 JUST COUNT THE NUMBER OF COMPS
+	c. 0 <= #swaps <= N(N-1) /2 DEPENDS ON THE NUMBER OF SWAPS, JUST COUNT
+	INSERTION SORT IS SENSITIVE TO THE ORDER OF THE DATA
+
+
+12/8
+Useful Convention: Let a and b be integers and [a,b) is an interval of integers. Then, the length of the interval is simply b-a.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+11/21
+public static void badShuffle(Object [] array){
+       int n = array.length;
+       for(int i = 0; i < n; i++){
+       	       int r = (int)(Math.random()*n);
+	       Object rElement = array[r];
+	       array[r] = array[i];
+	       array[i] = rElement;
+	       }
+	       }
+
+public static Object [] sample (Object [] array, int m){
+       Object [] ans = new Object[m];
+       int [] pos = new int[array.length];
+       for(int i = 0; i<pos.length; i++){
+       	       pos[i] = i;}
+       shuffle(pos);
+       for(int i = 0; i<m;i++){
+		ans[i] = array[pos[i]];
+		}
+	return ans;
+	}
+
+public static int linearSearch(Object [] array, Object key){
+       for(int i = 0; i < array.length; i++){
+       	       if(array[i].equals(key))
+			return i;
+	}
+	return -1;
+}
+
+
+11/10
+USING AN ARRAY
+      -[n] operator is used to access the (n+1)th value in the array
+      -n must be an integer where 0 <= n  < length
+ex.
+	int [] odds = new int[5];
+	for (int i=0; i<odds.length();i++)
+	    odds[i] = 2*i=1;
+
+PRINTING AN ARRAY - Two ways
+for(int i=0; i<odds.length();i++){
+    System.out.println(odds[i]);
+    }
+
+for(int x:odds){
+	System.out.println(x);
+}
+
+11/9
+ARRAYS - A data structure which defines an ordered collection of a fixed number of homogenous data elements
+       -This means that all the elements in the array have the same datatype
+       -The size of the array is fixed and cannot increase to accomodate more elements
+       -Arrays are objects
+       -Arrays can be of primitive datatypes or reference types
+       -Each array object has an instance variable, length, which specifies the number of elements the array can accomodate
+       -SIMPLE ARRAYS are one-dimensional arrays
+       -Since arrays can store object references, the objects referenced can also be an array of arrays (multi-dimensional arrays)
+
+DECLARING ARRAY VARIABLES
+Form 1: <dataType> [] <arrayName>;
+Form 2: <dataType> <arrayname> [];
+     ex. int [] numbers; //FORM 1
+     	 Person [] people, group; //FORM 1
+	 String names[], first; //FORM 2
+
+numbers, people, group, and names are array references (not arrays)
+first is not an array reference but a String reference
+
+CONSTRUCTING AN ARRAY
+Form: <arrayName> = new <datatype>[<length>];
+//where length is a nonnegative integer
+
+ex.
+	numbers = new int[10];
+	people = new Person[5];
+numbers is a reference to an array of 10 integers. Each integer value is 0 since 0 is the default value of an integer.
+people is a reference to an array of 5 Person references. Each reference refers to null, the default value of a reference.
+
+INITIALIZING AN ARRAY
+Form: <dataType> [] <arrayName> = {<arrayInitializeCode>};
+ex.
+	int[] numbers = {1,2,3,4,5};
+	Person[] people = {new Person("Billy","Bob"),null,null};
+
+
+11/7
+A super class reference can denote objects of its subclass
+
+POLYMORPHISM - Which object a reference will actually denote during runtime cannot determined at compile time. Polymorphism allows a reference to denote different objects in the inheritance hierarchy at different times during execution.
+
+DYNAMIC METHOD LOOKUP -  When a method is invoked using a reference, the method definition which actually gets executed is determined by the class of the object denoted by the reference at runtime
+
+	       Coin c;
+	       if (Math.random() > 5);
+	       	  c = new Coin;
+	       else
+		  c = new BiasedCoin(0,2);
+
+PSEUDOINHERITANCE - Any instance variable that is declared private in the superclass cannot be directly accessed by a subclass, although it is inherited by the subclass
+
+	       public class A{
+	       	      private int _x;
+		      
+		      public A(int x){
+		      	     _x = x;
+			     }
+			     
+		      public int f(){return _x + 2}
+		      public int f(){return _x + 2}
+		      }
+
+
+-----------------------------------------------------------------------------
+
+10/31
+Lexiographic order
+"a".compareTo("b") < 0  -> true
+
+10/27
+String method
+"apple".indexOf("a") -> 0
+"Hello world".substring(5,8) -> " wo"
+
+10/26
+String: any sequence of characters enclosed in double quotes
+
+10/21
+SYNTACTIC SUGAR
+	  while loop
+	  for loop
+Syntax
+for(<init.>;<boolean>;<update>){
+	statementblock;
+}
+
+10/20
+THE WHILE STATEMENT
+while(boolean)
+	statement;
+
+while(boolean){
+	statementblock;
+}
+
+10/18
+CONTROL FLOW STRUCTURES
+if(boolean){
+statement;
+}
+
+if(boolean){
+block1;
+}
+else {
+block2;
+}
+
+Simulate flipping a fair coin
+Math.random() -> double
+//returns a pseudorandom value within [0,1)
+
+Flipcoin.java
+
+
+10/17
+OBJECT EQUALITY
+a.equals(b); //Only returns true if a and b are aliases
+i.e.
+Object a = new Object();
+Object b = a;
+The object class provides the boolean method equals(Object) which can be overridden to give the correct meaning of object equality. The default behavior returns true if the object is compared to itself.
+Two strings are equal if they contain the same sequence of characters.
+
+CONDITIONAL OPERATORS: &&, ||
+x && y -> true if both x and y are true
+x || y -> true if either x or y is true
+*the operands must be BOOLEAN VALUES
+*uses short circuit evaluation: the left operand is evaluated before the right operand
+-------------------------------------------------------------------------------
+10/13
+PRIMITIVE DATA TYPES: int, double, boolean
+WIDENING CONVERSIONS: For the primitive data types, a value of a narrower datatype can be converted to a value of a broader datatype without loss of conversion.
+*ints are NARROWER than doubles
+*doubles are WIDER than ints
+EQUALITY AND INEQUALITY OPERATORS: ==, !=
+int == int -> boolean
+int == double -> boolean
+double == int -> boolean
+boolean == boolean -> boolean
+boolean == int -> compiler error
+
+OBJECT REFERENCE EQUALITY: ==, !=
+The equality operator == and the inequality operator != can be applied to object references to test of they denote the same object
+
+-Given r and s are object references
+       r==s  r and s are equal if they have the same reference value 
+       r!=s  r and s are not equal if they do not have the same reference value
+
+The operands must be type compatible
+
+The null reference can be assigned to any Object reference, and an object referene can be compared for equality with the reference
+ex. String s = null;
+boolean valid = s!= null;
+valid gets false
+
+10/11
+BOOLEAN VALUES
+primitive data type: boolean
+Wrapper class: Boolean
+	ex. Boolean b1 = new Boolean(false); //object
+	boolean b2 = false; //memory allocation
+Values: true, false (no ordering property)
+default value: false
+b1.toString -> "false"
+b2.toString -> compilation error
+A) Rational operators: >, >=, <=, <
+- arguments must be numeric (int, double, Integer, Double)
+- return boolean values
+- left associative
+OPERATOR PRECEDENCE
+Object creation and casting: new (type)
+Logical NOT: !
+Multiplication and division: *, /, %
+Addition and subtraction: +, -
+Rational Operators: >, >=, <=, <
+Equality Operators: == , !=
+Logical AND: &&
+Logical OR: ||
+Assignment: =, +=, -=, *=, /=, %=
+B) Equality (Two Cases) ==, !=
+I. Primitive Data types (int, double, boolean)
+- given a and b are primitive data types
+a == b -> a and b are equal
+a != b -> a and b are not equal
+
+
+10/6 (TEST 10/14)
+
+Classname| SunCartoon
+Properties (fields)| -_sun:Ellipse
+	   	     -_bubble:ConversationBubble
+Capabilities| + SunCartoon()
+
+
+9/30
+
+public class B extends A{
+       //instance variable
+       private int _n;
+
+       //constructor
+       public B(){ 
+       super();
+       _n = -1;
+       }
+       //overwrite the toString method
+       public String toString(){
+       
+       String ans = super.toString();
+       ans += "_n: " + _n;
+       return ans;
+}}
+creates a class b based on info from a
+
+9/29
+
+OBJECT ORIENTED PROGRAMMING
+Create your own datatype
++ Object.java
++ toString() : String
+
++ public
+- private
+# protected
+
+new <Constructor> -> instantiates an object, creates an instance of the object
+A constructor is a special method that has the instructions on how to initialize an object
+
+obj1.toString() //read as: toString() is invoked on obj1
+
+9/26
+
+INTEGER OVERFLOW
+final int MIN = Integer.MIN_VALUE;
+What is the value of Math.abs(MIN) ? 
+
+DOUBLE DATA TYPE
+used to represent floating point numbers
+operators: +,-,*,/
+closure property for these operators
+	 double operator double -> double
+Two special values (legal doubles)
+1) infinity, -infinity
+   ex. 3.5 / 0.0 -> infinity
+       -3.5 / 0.0 -> -infinity
+2) NaN -> not a number
+   ex. Math.sqrt(-1.0) -> NaN
+       0.0 / 0.0 -> NaN
+
+AUTOMATIC PROMOTION
+a. double operator int = 
+   double operator double
+   double
+b. int operator double = 
+   double operator double
+   double
+ex. 3 + 4.8 = 
+    3.0 + 4.8
+    7.8
+
+TYPE CONVERSION
+I) explicit type conversion
+   string -> double
+II) Explicit cast
+    ex. (double) 3 -> 3.0
+
+JAVA METHOD
+public		static		void		cow(){}
+modifier	a free method	return type	method name+parameter list
+
+9/21
+
+Exam: Ch 1-3 ThinkJava
+%, Math.floor.Mod() (python)
+int, String operators
+assignment
+-compound assignment
+escape sequences \n, \t, \", \\
+System.out.println()
+System.out.print()
+Integer Overflow
+Integer.parseInt()
+Compiler Error and Runtime error
+Compiler u know, incorrect syntax
+Runtime exception is like divide by 0
+(int) 5.3 => 5, (int) acts like trunc, has high priority
+
+9/20
+
+Compound Assignment Operators
++=, -=, *=, /=, %=
+
+ex.
+x = x + k <=> x += k Strings and numbers
+x = x - k <=> x -= k numbers
+x = x * k <=> x *= k Strings and numbers
+x = x / k <=> x /= k Strings and numbers
+x = x % k <=> x %= k Strings and numbers
+
+Assignment operators have lowest precedence
+x = 10
+y = 43
+ex: x %= y %= 2 + 2;
+x %= Y %= 4;
+x %= 3;
+x = 10 % 3 = 1
+
+A second definition of mod is widely used (Python)
+r = n % d = n - floor(n/d) * d
+floor(x) returns the greatest integer less than or equal to x (2 7/8 -> -3)
+Equation 	 Java Mod     floor Mod
+18 % 7		 4    	      4
+7 % 18		 7	      7
+-18 % 7		 -4	      3
+18 % -7		 4	      -3
+
+
+9/19
+
+INTEGERS
+Operators: + - * / %
+Closed under all the operators
+int operator int -> int
+
+(A.) Integer division
+Math
+trunc (3.5) -> 3
+trunc (2.9) -> 2
+
+Java
+7/2 -> 3
+2/7 -> 0
+
+n/d -> quotient
+d cannot be zero
+
+(B.) % the remainder operator (mod)
+r = n % d
+r = remainder
+n = dividend
+d = divisor
+r follows the sign of n
+
+Java Definition:
+ex. r = n - trunc(n/d) * d
+r = 25 % 3 = 1
+
+9/15
+
+convert string to integer:
+int foo = Integer.parseint(String <var>);
+//OR
+int foo = Integer.parseint("12345");
+
+
+9/14
+
+Java is a strongly typed language
+<Datatype> <variable>;
+ex. String name;
+    String x,y,z;
+    System.out.println(name); //Compiler error, unassigned variable
+
+INITIALIZING VARIABLES
+use the assignment operator => <variable> = <value>;
+*the assignment operator returns a value
+name="Bob";
+System.out.println(x = "Jane"); //prints Jane
+y = z = x; //right associative
+x = "Mary"; // =  read as "gets"
+//x is "Mary, y is "Jane", z is "Jane"
+
+DECLARING AND INITIALIZING A VARIABLE IN A STATEMENT
+ex. String name = "Bob; //Max one variable declared per line
+
+STRING CATTING
+<String> + <String> -> <String>
+ex. "meat" + "ball" -> "meatball"
+<String> + <Object> -> <String> and vice versa
+ex. "Cat" + 5 = "Cat5"
