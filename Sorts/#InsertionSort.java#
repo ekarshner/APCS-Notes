@@ -1,0 +1,15 @@
+public static void walkDown(Integer [] data, int a){
+    int temp = 0;
+    for(int i = a; i > 0; i--){ 
+	if(data[i] < data[i-1]){
+	    temp = data[i-1];
+	    data[i-1] = data[i];
+	    data[i] = temp;}
+	else break;
+    }
+}
+	
+
+public static void insertionSort(Integer [] data, int a){
+    for(i = 0; i < data.length; i++){
+	

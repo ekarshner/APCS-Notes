@@ -1,0 +1,3 @@
+public class NumberApp{
+    public static void main(String [] args){
+	MyNumber [] nums = new Binary [10];

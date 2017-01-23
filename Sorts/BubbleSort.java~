@@ -1,0 +1,11 @@
+public static void sinkMax(Integer [] data, int b){
+    int temp = 0;
+    for(int i = 0; i < b; i++){
+	if(data[i] > data[i+1]){
+	    temp = data[i];
+	    data[i] = data[i+1];
+	    data[i+1] = temp;
+	}
+	else break;
+    }
+}
